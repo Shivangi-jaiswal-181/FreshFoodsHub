@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - FreshFoodsHub</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header{
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container{
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover{
+            background: #246b45;
+        }
+
+        #status{
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .back{
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #555;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>FreshFoodsHub</h1>
+    <h2>Order Tracking</h2>
+</header>
+
+<div class="container">
+
+    <h3>Track Your Order</h3>
+
+    <input type="text" id="orderId" placeholder="Enter Order ID">
+
+    <button onclick="trackOrder()">Track Order</button>
+
+    <div id="status"></div>
+
+    <a href="index.html" class="back">Back to Home</a>
+
+</div>
+
+<script>
+function trackOrder(){
+
+    let orderId = document.getElementById("orderId").value;
+    let status = document.getElementById("status");
+
+    if(orderId === ""){
+        alert("Please enter Order ID");
+        return;
+    }
+
+    let orderStatus = [
+        "🟡 Processing",
+        "📦 Shipped",
+        "🚚 Out for Delivery",
+        "✅ Delivered"
+    ];
+
+    let randomStatus =
+        orderStatus[Math.floor(Math.random() * orderStatus.length)];
+
+    status.innerHTML =
+        "Order ID: " + orderId + "<br><br>Status: " + randomStatus;
+}
+</script>
+
+</body>
+</html>

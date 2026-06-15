@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Ordering & Payment - FreshFoodsHub</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header{
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container{
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        input, textarea, select{
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover{
+            background: #246b45;
+        }
+
+        #message{
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+
+        .back{
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #555;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>FreshFoodsHub</h1>
+    <h2>Online Ordering & Payment</h2>
+</header>
+
+<div class="container">
+
+    <label>Customer Name</label>
+    <input type="text" id="name" placeholder="Enter Your Name">
+
+    <label>Delivery Address</label>
+    <textarea id="address" placeholder="Enter Delivery Address"></textarea>
+
+    <label>Payment Method</label>
+    <select id="payment">
+        <option value="">Select Payment Method</option>
+        <option>UPI</option>
+        <option>Debit Card</option>
+        <option>Credit Card</option>
+        <option>Cash on Delivery</option>
+    </select>
+
+    <button onclick="placeOrder()">Place Order</button>
+
+    <div id="message"></div>
+
+    <a href="index.html" class="back">Back to Home</a>
+
+</div>
+
+<script>
+function placeOrder(){
+
+    let name = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let payment = document.getElementById("payment").value;
+
+    if(name === "" || address === "" || payment === ""){
+        alert("Please fill all details");
+    }
+    else{
+        document.getElementById("message").innerHTML =
+        "✅ Order Placed Successfully!";
+    }
+}
+</script>
+
+</body>
+</html>

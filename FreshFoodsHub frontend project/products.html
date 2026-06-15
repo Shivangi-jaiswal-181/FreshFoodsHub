@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Products - FreshFoodsHub</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    margin:0;
+}
+
+header{
+    background:#2e8b57;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding:20px;
+}
+
+.product{
+    background:white;
+    padding:20px;
+    width:250px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input{
+    width:80%;
+    padding:8px;
+    margin:10px 0;
+}
+
+button{
+    background:#2e8b57;
+    color:white;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1f6b40;
+}
+
+.cartBox{
+    text-align:center;
+    font-size:18px;
+    margin:10px;
+    font-weight:bold;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin:20px;
+    text-decoration:none;
+    background:#555;
+    color:white;
+    padding:10px;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>FreshFoodsHub</h1>
+    <h2>Product Listing (Dynamic Cart)</h2>
+</header>
+
+<div class="cartBox">
+    Total Cart Value: ₹<span id="cartTotal">0</span>
+</div>
+
+<div class="container">
+
+<!-- PRODUCT 1 -->
+<div class="product">
+    <h3>Apple</h3>
+    <p>₹120 per Kg</p>
+
+    <input type="number" id="qtyApple" placeholder="Enter Kg">
+
+    <button onclick="addToCart('Apple',120,'qtyApple')">
+        Add to Cart
+    </button>
+
+    <p id="msgApple"></p>
+</div>
+
+<!-- PRODUCT 2 -->
+<div class="product">
+    <h3>Banana</h3>
+    <p>₹50 per Dozen</p>
+
+    <input type="number" id="qtyBanana" placeholder="Enter Dozen">
+
+    <button onclick="addToCart('Banana',50,'qtyBanana')">
+        Add to Cart
+    </button>
+
+    <p id="msgBanana"></p>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product">
+    <h3>Milk</h3>
+    <p>₹60 per Litre</p>
+
+    <input type="number" id="qtyMilk" placeholder="Enter Litre">
+
+    <button onclick="addToCart('Milk',60,'qtyMilk')">
+        Add to Cart
+    </button>
+
+    <p id="msgMilk"></p>
+</div>
+
+<!-- PRODUCT 4 -->
+<div class="product">
+    <h3>Bread</h3>
+    <p>₹40 per Pack</p>
+
+    <input type="number" id="qtyBread" placeholder="Enter Packs">
+
+    <button onclick="addToCart('Bread',40,'qtyBread')">
+        Add to Cart
+    </button>
+
+    <p id="msgBread"></p>
+</div>
+
+</div>
+
+<a class="back" href="index.html">Back to Home</a>
+
+<script>
+
+let cartTotal = 0;
+
+function addToCart(product, price, qtyId){
+
+    let qty = document.getElementById(qtyId).value;
+
+    if(qty === "" || qty <= 0){
+        alert("Please enter valid quantity");
+        return;
+    }
+
+    let total = qty * price;
+
+    cartTotal += total;
+
+    document.getElementById("cartTotal").innerText = cartTotal;
+
+    document.getElementById("msg" + product).innerHTML =
+        product + " Added ✔ Total ₹" + total;
+}
+
+</script>
+
+</body>
+</html>
